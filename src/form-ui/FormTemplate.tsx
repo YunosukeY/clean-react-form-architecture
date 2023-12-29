@@ -3,7 +3,7 @@ import { Button, Grid } from "@mui/material";
 import { TextFieldContext } from "./TextFieldContext";
 
 type FormTemplateProps = {
-  onSubmit: React.FormEventHandler;
+  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 };
 
 const FormTemplate: React.FC<FormTemplateProps> = ({ onSubmit }) => {
