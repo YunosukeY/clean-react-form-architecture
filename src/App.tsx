@@ -1,25 +1,13 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import TextField from "./form-libraries/react-hook-form/TextField";
+import Form from "./form-libraries/react-hook-form/Form";
+import { TextFieldContext } from "./form-ui/TextFieldContext";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <TextFieldContext.Provider value={TextField}>
+      <Form />
+    </TextFieldContext.Provider>
   );
 }
 
