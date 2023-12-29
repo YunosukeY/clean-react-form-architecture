@@ -3,7 +3,12 @@ import { FormProvider, useForm } from "react-hook-form";
 import FormTemplate from "../../form-ui/FormTemplate";
 
 const Form: React.FC = () => {
-  const methods = useForm();
+  const methods = useForm({
+    defaultValues: {
+      firstName: "",
+      lastName: "",
+    },
+  });
 
   return (
     <FormProvider {...methods}>
