@@ -9,6 +9,7 @@ import FormikTextField from "./form-libraries/formik/TextField";
 import FormikErrorMessage from "./form-libraries/formik/ErrorMessage";
 import FinalForm from "./form-libraries/react-final-form/Form";
 import FinalFormTextField from "./form-libraries/react-final-form/TextField";
+import FinalFormErrorMessage from "./form-libraries/react-final-form/ErrorMessage";
 
 function App() {
   return (
@@ -35,12 +36,17 @@ function App() {
           <Formik />
         </ComponentContext.Provider>
       </Grid>
-      {/* <Grid item>
+      <Grid item>
         <Typography>React Final Form</Typography>
-        <ComponentContext.Provider value={{ TextField: FinalFormTextField }}>
+        <ComponentContext.Provider
+          value={{
+            TextField: FinalFormTextField,
+            ErrorMessage: FinalFormErrorMessage,
+          }}
+        >
           <FinalForm />
         </ComponentContext.Provider>
-      </Grid> */}
+      </Grid>
     </Grid>
   );
 }
