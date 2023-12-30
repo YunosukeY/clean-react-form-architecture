@@ -6,6 +6,7 @@ import HookFormTextField from "./form-libraries/react-hook-form/TextField";
 import HookFormErrorMessage from "./form-libraries/react-hook-form/ErrorMessage";
 import Formik from "./form-libraries/formik/Form";
 import FormikTextField from "./form-libraries/formik/TextField";
+import FormikErrorMessage from "./form-libraries/formik/ErrorMessage";
 import FinalForm from "./form-libraries/react-final-form/Form";
 import FinalFormTextField from "./form-libraries/react-final-form/TextField";
 
@@ -23,13 +24,18 @@ function App() {
           <HookForm />
         </ComponentContext.Provider>
       </Grid>
-      {/* <Grid item>
+      <Grid item>
         <Typography>Formik</Typography>
-        <ComponentContext.Provider value={{ TextField: FormikTextField }}>
+        <ComponentContext.Provider
+          value={{
+            TextField: FormikTextField,
+            ErrorMessage: FormikErrorMessage,
+          }}
+        >
           <Formik />
         </ComponentContext.Provider>
       </Grid>
-      <Grid item>
+      {/* <Grid item>
         <Typography>React Final Form</Typography>
         <ComponentContext.Provider value={{ TextField: FinalFormTextField }}>
           <FinalForm />
