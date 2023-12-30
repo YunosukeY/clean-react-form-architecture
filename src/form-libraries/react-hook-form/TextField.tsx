@@ -1,7 +1,7 @@
 import React from "react";
 import { TextField as MuiTextField } from "@mui/material";
 import { useController, useFormContext } from "react-hook-form";
-import { TextFieldProps } from "../../form-ui/TextFieldProps";
+import { TextFieldProps } from "../../form-ui/ComponentProps";
 
 const TextField: React.FC<TextFieldProps> = (props) => {
   const { control } = useFormContext();

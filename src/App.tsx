@@ -1,8 +1,9 @@
 import React from "react";
 import { Grid, Typography } from "@mui/material";
-import { TextFieldContext } from "./form-ui/TextFieldContext";
+import { ComponentContext } from "./form-ui/ComponentContext";
 import HookForm from "./form-libraries/react-hook-form/Form";
 import HookFormTextField from "./form-libraries/react-hook-form/TextField";
+import HookFormErrorMessage from "./form-libraries/react-hook-form/ErrorMessage";
 import Formik from "./form-libraries/formik/Form";
 import FormikTextField from "./form-libraries/formik/TextField";
 import FinalForm from "./form-libraries/react-final-form/Form";
@@ -10,25 +11,30 @@ import FinalFormTextField from "./form-libraries/react-final-form/TextField";
 
 function App() {
   return (
-    <Grid container spacing={1}>
+    <Grid container spacing={2}>
       <Grid item>
         <Typography>React Hook Form</Typography>
-        <TextFieldContext.Provider value={HookFormTextField}>
+        <ComponentContext.Provider
+          value={{
+            TextField: HookFormTextField,
+            ErrorMessage: HookFormErrorMessage,
+          }}
+        >
           <HookForm />
-        </TextFieldContext.Provider>
+        </ComponentContext.Provider>
       </Grid>
-      <Grid item>
+      {/* <Grid item>
         <Typography>Formik</Typography>
-        <TextFieldContext.Provider value={FormikTextField}>
+        <ComponentContext.Provider value={{ TextField: FormikTextField }}>
           <Formik />
-        </TextFieldContext.Provider>
+        </ComponentContext.Provider>
       </Grid>
       <Grid item>
         <Typography>React Final Form</Typography>
-        <TextFieldContext.Provider value={FinalFormTextField}>
+        <ComponentContext.Provider value={{ TextField: FinalFormTextField }}>
           <FinalForm />
-        </TextFieldContext.Provider>
-      </Grid>
+        </ComponentContext.Provider>
+      </Grid> */}
     </Grid>
   );
 }
