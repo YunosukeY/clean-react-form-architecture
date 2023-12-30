@@ -2,7 +2,6 @@ import React from "react";
 import { Form as FinalForm } from "react-final-form";
 import FormTemplate from "../../form-ui/FormTemplate";
 import { userSchema } from "../../schema/user";
-import { ComponentContext } from "../../form-ui/ComponentContext";
 import TextField from "./TextField";
 import ErrorMessage from "./ErrorMessage";
 
@@ -21,22 +20,21 @@ const validate = (user: unknown) => {
 
 const Form: React.FC = () => {
   return (
-    <ComponentContext.Provider
-      value={{
-        TextField,
-        ErrorMessage,
+    <FinalForm
+      initialValues={{
+        firstName: "",
+        lastName: "",
       }}
-    >
-      <FinalForm
-        initialValues={{
-          firstName: "",
-          lastName: "",
-        }}
-        onSubmit={(values) => console.log(values)}
-        render={({ handleSubmit }) => <FormTemplate onSubmit={handleSubmit} />}
-        validate={validate}
-      />
-    </ComponentContext.Provider>
+      onSubmit={(values) => console.log(values)}
+      render={({ handleSubmit }) => (
+        <FormTemplate
+          onSubmit={handleSubmit}
+          TextField={TextField}
+          ErrorMessage={ErrorMessage}
+        />
+      )}
+      validate={validate}
+    />
   );
 };
 

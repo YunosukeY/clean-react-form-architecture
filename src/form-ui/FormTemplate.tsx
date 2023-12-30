@@ -1,16 +1,18 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Button, Grid } from "@mui/material";
-import { ComponentContext } from "./ComponentContext";
+import { ErrorMessageProps, TextFieldProps } from "./ComponentProps";
 
 type FormTemplateProps = {
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  TextField: React.FC<TextFieldProps>;
+  ErrorMessage: React.FC<ErrorMessageProps>;
 };
 
-const FormTemplate: React.FC<FormTemplateProps> = ({ onSubmit }) => {
-  const value = useContext(ComponentContext);
-  if (value === undefined) return null;
-  const { TextField, ErrorMessage } = value;
-
+const FormTemplate: React.FC<FormTemplateProps> = ({
+  onSubmit,
+  TextField,
+  ErrorMessage,
+}) => {
   return (
     <form onSubmit={onSubmit}>
       <Grid container direction="column" spacing={1}>

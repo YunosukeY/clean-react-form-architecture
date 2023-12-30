@@ -2,7 +2,6 @@ import React from "react";
 import { FormikProvider, useFormik } from "formik";
 import FormTemplate from "../../form-ui/FormTemplate";
 import { User, userSchema } from "../../schema/user";
-import { ComponentContext } from "../../form-ui/ComponentContext";
 import TextField from "./TextField";
 import ErrorMessage from "./ErrorMessage";
 
@@ -30,16 +29,13 @@ const Form: React.FC = () => {
   });
 
   return (
-    <ComponentContext.Provider
-      value={{
-        TextField,
-        ErrorMessage,
-      }}
-    >
-      <FormikProvider value={formik}>
-        <FormTemplate onSubmit={formik.handleSubmit} />
-      </FormikProvider>
-    </ComponentContext.Provider>
+    <FormikProvider value={formik}>
+      <FormTemplate
+        onSubmit={formik.handleSubmit}
+        TextField={TextField}
+        ErrorMessage={ErrorMessage}
+      />
+    </FormikProvider>
   );
 };
 
