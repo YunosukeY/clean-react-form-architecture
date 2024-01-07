@@ -34,6 +34,7 @@ const Form: React.FC = () => {
         />
       )}
       validate={validate}
+      subscription={{}}
     />
   );
 };
