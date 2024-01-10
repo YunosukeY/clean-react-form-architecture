@@ -3,12 +3,21 @@ import { Button, Grid } from "@mui/material";
 import { ErrorMessageProps, TextFieldProps } from "./ComponentProps";
 
 type FormTemplateProps = {
+  getValue: (path: string) => unknown;
+  setValue: (path: string, value: unknown) => void;
+  validate: () => void;
+  isDirty: boolean;
+  isValid: boolean;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   TextField: React.FC<TextFieldProps>;
   ErrorMessage: React.FC<ErrorMessageProps>;
 };
 
 const FormTemplate: React.FC<FormTemplateProps> = ({
+  getValue,
+  setValue,
+  isDirty,
+  isValid,
   onSubmit,
   TextField,
   ErrorMessage,
@@ -25,7 +34,9 @@ const FormTemplate: React.FC<FormTemplateProps> = ({
           <ErrorMessage name="lastName" />
         </Grid>
       </Grid>
-      <Button type="submit">Submit</Button>
+      <Button type="submit" disabled={!isDirty || isValid}>
+        Submit
+      </Button>
     </form>
   );
 };

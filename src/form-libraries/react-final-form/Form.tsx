@@ -26,15 +26,26 @@ const Form: React.FC = () => {
         lastName: "",
       }}
       onSubmit={(values) => console.log(values)}
-      render={({ handleSubmit }) => (
+      render={({
+        handleSubmit,
+        form: { change, blur, getState },
+        dirty,
+        valid,
+      }) => (
         <FormTemplate
+          getValue={() => undefined}
+          setValue={change as (name: string, value: unknown) => void}
+          isDirty={dirty}
+          isValid={valid}
+          validate={() => {}}
           onSubmit={handleSubmit}
           TextField={TextField}
           ErrorMessage={ErrorMessage}
         />
       )}
       validate={validate}
-      subscription={{}}
+      validateOnBlur
+      subscription={{ values: true, dirty: true, valid: true }}
     />
   );
 };

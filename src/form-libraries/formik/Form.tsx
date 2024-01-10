@@ -26,11 +26,19 @@ const Form: React.FC = () => {
     },
     onSubmit: (values) => console.log(values),
     validate,
+    validateOnMount: false,
+    validateOnChange: false,
+    validateOnBlur: true,
   });
 
   return (
     <FormikProvider value={formik}>
       <FormTemplate
+        getValue={() => undefined}
+        setValue={formik.setFieldValue}
+        isDirty={formik.dirty}
+        isValid={formik.isValid}
+        validate={() => {}}
         onSubmit={formik.handleSubmit}
         TextField={TextField}
         ErrorMessage={ErrorMessage}

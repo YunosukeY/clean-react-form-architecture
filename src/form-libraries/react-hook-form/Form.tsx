@@ -13,11 +13,18 @@ const Form: React.FC = () => {
       lastName: "",
     },
     resolver: zodResolver(userSchema),
+    mode: "onBlur",
+    reValidateMode: "onBlur",
   });
 
   return (
     <FormProvider {...methods}>
       <FormTemplate
+        getValue={methods.watch}
+        setValue={methods.setValue as (path: string, value: unknown) => void}
+        isDirty={methods.formState.isDirty}
+        isValid={methods.formState.isValid}
+        validate={methods.trigger}
         onSubmit={methods.handleSubmit((data) => console.log(data))}
         TextField={TextField}
         ErrorMessage={ErrorMessage}
