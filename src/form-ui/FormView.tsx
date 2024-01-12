@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Grid } from "@mui/material";
-import { FieldRenderProps } from "./props";
+import { Field } from "./props";
 import FieldView from "./FieldView";
 
 type FormTemplateProps = {
@@ -10,7 +10,7 @@ type FormTemplateProps = {
   isDirty: boolean;
   isValid: boolean;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-  useField: (name: string) => FieldRenderProps;
+  getUseField: (name: string) => () => Field;
 };
 
 const FormView: React.FC<FormTemplateProps> = ({
@@ -19,16 +19,16 @@ const FormView: React.FC<FormTemplateProps> = ({
   isDirty,
   isValid,
   onSubmit,
-  useField,
+  getUseField,
 }) => {
   return (
     <form onSubmit={onSubmit}>
       <Grid container direction="column" spacing={1}>
         <Grid item>
-          <FieldView useField={useField} name="firstName" />
+          <FieldView useDependencies={getUseField("firstName")} />
         </Grid>
         <Grid item>
-          <FieldView useField={useField} name="lastName" />
+          <FieldView useDependencies={getUseField("lastName")} />
         </Grid>
       </Grid>
       <Button type="submit" disabled={!isDirty || !isValid}>

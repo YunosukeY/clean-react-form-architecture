@@ -2,7 +2,7 @@ import React from "react";
 import { Form as FinalForm } from "react-final-form";
 import FormView from "../../form-ui/FormView";
 import { userSchema } from "../../schema/user";
-import { useField } from "./useField";
+import { getUseField } from "./getUseField";
 
 const validate = (user: unknown) => {
   const errors: Record<string, string> = {};
@@ -38,7 +38,7 @@ const FormPresenter: React.FC = () => {
           isValid={valid}
           validate={() => {}}
           onSubmit={handleSubmit}
-          useField={useField}
+          getUseField={getUseField}
         />
       )}
       validate={validate}

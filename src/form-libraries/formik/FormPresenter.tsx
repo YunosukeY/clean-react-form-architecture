@@ -2,7 +2,7 @@ import React from "react";
 import { FormikProvider, useFormik } from "formik";
 import FormView from "../../form-ui/FormView";
 import { User, userSchema } from "../../schema/user";
-import { useField } from "./useField";
+import { getUseField } from "./getUseField";
 
 const validate = (user: unknown) => {
   const errors: Record<string, string> = {};
@@ -18,6 +18,16 @@ const validate = (user: unknown) => {
 };
 
 const FormPresenter: React.FC = () => {
+  const { formik, ...rest } = useDependencies();
+
+  return (
+    <FormikProvider value={formik}>
+      <FormView {...rest} />
+    </FormikProvider>
+  );
+};
+
+const useDependencies = () => {
   const formik = useFormik<User>({
     initialValues: {
       firstName: "",
@@ -30,19 +40,16 @@ const FormPresenter: React.FC = () => {
     validateOnBlur: true,
   });
 
-  return (
-    <FormikProvider value={formik}>
-      <FormView
-        getValue={() => undefined}
-        setValue={formik.setFieldValue}
-        isDirty={formik.dirty}
-        isValid={formik.isValid}
-        validate={() => {}}
-        onSubmit={formik.handleSubmit}
-        useField={useField}
-      />
-    </FormikProvider>
-  );
+  return {
+    formik,
+    getValue: () => undefined,
+    setValue: formik.setFieldValue,
+    isDirty: formik.dirty,
+    isValid: formik.isValid,
+    validate: () => {},
+    onSubmit: formik.handleSubmit,
+    getUseField,
+  };
 };
 
 export default FormPresenter;

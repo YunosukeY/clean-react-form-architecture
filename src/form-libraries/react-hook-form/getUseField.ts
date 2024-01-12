@@ -1,8 +1,8 @@
 import { useController, useFormContext } from "react-hook-form";
-import { FieldRenderProps } from "../../form-ui/props";
+import { GetUseField } from "../../form-ui/props";
 import { get } from "lodash";
 
-export const useField = (name: string): FieldRenderProps => {
+export const getUseField: GetUseField = (name) => () => {
   const {
     control,
     formState: { errors },

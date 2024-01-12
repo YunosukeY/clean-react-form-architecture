@@ -3,9 +3,19 @@ import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import FormView from "../../form-ui/FormView";
 import { User, userSchema } from "../../schema/user";
-import { useField } from "./useField";
+import { getUseField } from "./getUseField";
 
 const FormPresenter: React.FC = () => {
+  const { methods, ...rest } = useDependencies();
+
+  return (
+    <FormProvider {...methods}>
+      <FormView {...rest} />
+    </FormProvider>
+  );
+};
+
+const useDependencies = () => {
   const methods = useForm<User>({
     defaultValues: {
       firstName: "",
@@ -16,19 +26,16 @@ const FormPresenter: React.FC = () => {
     reValidateMode: "onBlur",
   });
 
-  return (
-    <FormProvider {...methods}>
-      <FormView
-        getValue={methods.watch}
-        setValue={methods.setValue as (path: string, value: unknown) => void}
-        isDirty={methods.formState.isDirty}
-        isValid={methods.formState.isValid}
-        validate={methods.trigger}
-        onSubmit={methods.handleSubmit((data) => console.log(data))}
-        useField={useField}
-      />
-    </FormProvider>
-  );
+  return {
+    methods,
+    getValue: methods.watch,
+    setValue: methods.setValue as (path: string, value: unknown) => void,
+    isDirty: methods.formState.isDirty,
+    isValid: methods.formState.isValid,
+    validate: methods.trigger,
+    onSubmit: methods.handleSubmit((data) => console.log(data)),
+    getUseField,
+  };
 };
 
 export default FormPresenter;
