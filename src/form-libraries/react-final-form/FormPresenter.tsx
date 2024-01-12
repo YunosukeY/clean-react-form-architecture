@@ -1,6 +1,6 @@
 import React from "react";
 import { Form as FinalForm } from "react-final-form";
-import FormTemplate from "../../form-ui/FormTemplate";
+import FormView from "../../form-ui/FormView";
 import { userSchema } from "../../schema/user";
 import { useField } from "./useField";
 
@@ -17,7 +17,7 @@ const validate = (user: unknown) => {
   return errors;
 };
 
-const Form: React.FC = () => {
+const FormPresenter: React.FC = () => {
   return (
     <FinalForm
       initialValues={{
@@ -31,7 +31,7 @@ const Form: React.FC = () => {
         dirty,
         valid,
       }) => (
-        <FormTemplate
+        <FormView
           getValue={() => undefined}
           setValue={change as (name: string, value: unknown) => void}
           isDirty={dirty}
@@ -48,4 +48,4 @@ const Form: React.FC = () => {
   );
 };
 
-export default Form;
+export default FormPresenter;

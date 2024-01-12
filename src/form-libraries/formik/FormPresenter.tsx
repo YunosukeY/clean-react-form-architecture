@@ -1,6 +1,6 @@
 import React from "react";
 import { FormikProvider, useFormik } from "formik";
-import FormTemplate from "../../form-ui/FormTemplate";
+import FormView from "../../form-ui/FormView";
 import { User, userSchema } from "../../schema/user";
 import { useField } from "./useField";
 
@@ -17,7 +17,7 @@ const validate = (user: unknown) => {
   return errors;
 };
 
-const Form: React.FC = () => {
+const FormPresenter: React.FC = () => {
   const formik = useFormik<User>({
     initialValues: {
       firstName: "",
@@ -32,7 +32,7 @@ const Form: React.FC = () => {
 
   return (
     <FormikProvider value={formik}>
-      <FormTemplate
+      <FormView
         getValue={() => undefined}
         setValue={formik.setFieldValue}
         isDirty={formik.dirty}
@@ -45,4 +45,4 @@ const Form: React.FC = () => {
   );
 };
 
-export default Form;
+export default FormPresenter;

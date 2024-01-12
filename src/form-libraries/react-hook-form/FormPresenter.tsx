@@ -1,11 +1,11 @@
 import React from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import FormTemplate from "../../form-ui/FormTemplate";
+import FormView from "../../form-ui/FormView";
 import { User, userSchema } from "../../schema/user";
 import { useField } from "./useField";
 
-const Form: React.FC = () => {
+const FormPresenter: React.FC = () => {
   const methods = useForm<User>({
     defaultValues: {
       firstName: "",
@@ -18,7 +18,7 @@ const Form: React.FC = () => {
 
   return (
     <FormProvider {...methods}>
-      <FormTemplate
+      <FormView
         getValue={methods.watch}
         setValue={methods.setValue as (path: string, value: unknown) => void}
         isDirty={methods.formState.isDirty}
@@ -31,4 +31,4 @@ const Form: React.FC = () => {
   );
 };
 
-export default Form;
+export default FormPresenter;

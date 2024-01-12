@@ -2,12 +2,12 @@ import React from "react";
 import { FieldRenderProps } from "./props";
 import { TextField, Typography } from "@mui/material";
 
-type FieldProps = {
+type FieldViewProps = {
   useField: (name: string) => FieldRenderProps;
   name: string;
 };
 
-const Field: React.FC<FieldProps> = ({ useField, name }) => {
+const FieldView: React.FC<FieldViewProps> = ({ useField, name }) => {
   const { error, ...input } = useField(name);
   return (
     <>
@@ -17,4 +17,4 @@ const Field: React.FC<FieldProps> = ({ useField, name }) => {
   );
 };
 
-export default Field;
+export default FieldView;
