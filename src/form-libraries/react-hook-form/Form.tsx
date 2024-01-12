@@ -3,8 +3,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import FormTemplate from "../../form-ui/FormTemplate";
 import { User, userSchema } from "../../schema/user";
-import TextField from "./TextField";
-import ErrorMessage from "./ErrorMessage";
+import { useField } from "./useField";
 
 const Form: React.FC = () => {
   const methods = useForm<User>({
@@ -26,8 +25,7 @@ const Form: React.FC = () => {
         isValid={methods.formState.isValid}
         validate={methods.trigger}
         onSubmit={methods.handleSubmit((data) => console.log(data))}
-        TextField={TextField}
-        ErrorMessage={ErrorMessage}
+        useField={useField}
       />
     </FormProvider>
   );

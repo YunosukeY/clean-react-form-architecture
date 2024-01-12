@@ -1,8 +1,8 @@
 import { useController, useFormContext } from "react-hook-form";
-import { FieldProps } from "../../form-ui/props";
+import { FieldRenderProps } from "../../form-ui/props";
 import { get } from "lodash";
 
-export const useField = (name: string): FieldProps => {
+export const useField = (name: string): FieldRenderProps => {
   const {
     control,
     formState: { errors },
@@ -13,8 +13,10 @@ export const useField = (name: string): FieldProps => {
   });
 
   return {
+    name,
     value: field.value,
     onChange: field.onChange,
-    error: get(errors, name) as string | undefined,
+    onBlur: field.onBlur,
+    error: get(errors, name)?.message as string | undefined,
   };
 };

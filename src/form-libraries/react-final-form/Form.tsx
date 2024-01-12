@@ -2,8 +2,7 @@ import React from "react";
 import { Form as FinalForm } from "react-final-form";
 import FormTemplate from "../../form-ui/FormTemplate";
 import { userSchema } from "../../schema/user";
-import TextField from "./TextField";
-import ErrorMessage from "./ErrorMessage";
+import { useField } from "./useField";
 
 const validate = (user: unknown) => {
   const errors: Record<string, string> = {};
@@ -39,8 +38,7 @@ const Form: React.FC = () => {
           isValid={valid}
           validate={() => {}}
           onSubmit={handleSubmit}
-          TextField={TextField}
-          ErrorMessage={ErrorMessage}
+          useField={useField}
         />
       )}
       validate={validate}

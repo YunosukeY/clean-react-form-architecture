@@ -1,11 +1,7 @@
-import { TextFieldProps as MuiTextFieldProps } from "@mui/material";
-
-export type TextFieldProps = MuiTextFieldProps & { name: string };
-
-export type ErrorMessageProps = { name: string };
-
-export type FieldProps = {
+export type FieldRenderProps = {
+  name: string;
   value: unknown;
   onChange: (event: any) => void;
+  onBlur: (event: any) => void;
   error?: string;
 };

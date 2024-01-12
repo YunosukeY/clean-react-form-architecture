@@ -2,8 +2,7 @@ import React from "react";
 import { FormikProvider, useFormik } from "formik";
 import FormTemplate from "../../form-ui/FormTemplate";
 import { User, userSchema } from "../../schema/user";
-import TextField from "./TextField";
-import ErrorMessage from "./ErrorMessage";
+import { useField } from "./useField";
 
 const validate = (user: unknown) => {
   const errors: Record<string, string> = {};
@@ -40,8 +39,7 @@ const Form: React.FC = () => {
         isValid={formik.isValid}
         validate={() => {}}
         onSubmit={formik.handleSubmit}
-        TextField={TextField}
-        ErrorMessage={ErrorMessage}
+        useField={useField}
       />
     </FormikProvider>
   );

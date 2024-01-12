@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Grid } from "@mui/material";
-import { ErrorMessageProps, TextFieldProps } from "./props";
+import { FieldRenderProps } from "./props";
+import Field from "./Field";
 
 type FormTemplateProps = {
   getValue: (path: string) => unknown;
@@ -9,8 +10,7 @@ type FormTemplateProps = {
   isDirty: boolean;
   isValid: boolean;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-  TextField: React.FC<TextFieldProps>;
-  ErrorMessage: React.FC<ErrorMessageProps>;
+  useField: (name: string) => FieldRenderProps;
 };
 
 const FormTemplate: React.FC<FormTemplateProps> = ({
@@ -19,22 +19,19 @@ const FormTemplate: React.FC<FormTemplateProps> = ({
   isDirty,
   isValid,
   onSubmit,
-  TextField,
-  ErrorMessage,
+  useField,
 }) => {
   return (
     <form onSubmit={onSubmit}>
       <Grid container direction="column" spacing={1}>
         <Grid item>
-          <TextField name="firstName" label="First name" />
-          <ErrorMessage name="firstName" />
+          <Field useField={useField} name="firstName" />
         </Grid>
         <Grid item>
-          <TextField name="lastName" label="Last name" />
-          <ErrorMessage name="lastName" />
+          <Field useField={useField} name="lastName" />
         </Grid>
       </Grid>
-      <Button type="submit" disabled={!isDirty || isValid}>
+      <Button type="submit" disabled={!isDirty || !isValid}>
         Submit
       </Button>
     </form>
