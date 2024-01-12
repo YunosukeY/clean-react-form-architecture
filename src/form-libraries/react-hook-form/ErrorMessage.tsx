@@ -1,7 +1,7 @@
 import React from "react";
 import { useFormContext } from "react-hook-form";
 import { ErrorMessage as HookFormErrorMessage } from "@hookform/error-message";
-import { ErrorMessageProps } from "../../form-ui/ComponentProps";
+import { ErrorMessageProps } from "../../form-ui/props";
 import { Typography } from "@mui/material";
 
 const ErrorMessage: React.FC<ErrorMessageProps> = ({ name }) => {

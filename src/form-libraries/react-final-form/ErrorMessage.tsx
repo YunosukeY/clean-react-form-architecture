@@ -1,6 +1,6 @@
 import React from "react";
 import { Field } from "react-final-form";
-import { ErrorMessageProps } from "../../form-ui/ComponentProps";
+import { ErrorMessageProps } from "../../form-ui/props";
 import { Typography } from "@mui/material";
 
 const ErrorMessage: React.FC<ErrorMessageProps> = ({ name }) => {

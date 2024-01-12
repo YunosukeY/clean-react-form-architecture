@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Grid } from "@mui/material";
-import { ErrorMessageProps, TextFieldProps } from "./ComponentProps";
+import { ErrorMessageProps, TextFieldProps } from "./props";
 
 type FormTemplateProps = {
   getValue: (path: string) => unknown;

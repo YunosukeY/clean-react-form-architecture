@@ -17,6 +17,7 @@
     "@types/react-dom": "^18.0.0",
     "final-form": "^4.20.10",
     "formik": "^2.4.5",
+    "lodash.get": "^4.4.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-final-form": "^6.5.9",
@@ -49,5 +50,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/lodash.get": "^4.4.9"
   }
 }
