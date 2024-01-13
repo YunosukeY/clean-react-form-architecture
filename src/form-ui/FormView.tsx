@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Grid } from "@mui/material";
 import { GetUseField } from "./types";
-import FieldView from "./FieldView";
+import Field from "./Field";
 
 export type FormViewProps = {
   getValue: (path: string) => unknown;
@@ -25,10 +25,10 @@ const FormView: React.FC<FormViewProps> = ({
     <form onSubmit={onSubmit}>
       <Grid container direction="column" spacing={1}>
         <Grid item>
-          <FieldView useDependencies={getUseField("firstName")} />
+          <Field useDependencies={getUseField("firstName")} />
         </Grid>
         <Grid item>
-          <FieldView useDependencies={getUseField("lastName")} />
+          <Field useDependencies={getUseField("lastName")} />
         </Grid>
       </Grid>
       <Button type="submit" disabled={!isDirty || !isValid}>

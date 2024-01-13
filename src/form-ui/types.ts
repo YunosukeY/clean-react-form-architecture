@@ -7,7 +7,7 @@ type Input = {
   onBlur: React.FocusEventHandler<HTMLElement>;
 };
 
-type Field = {
+export type Field = {
   input: Input;
   error?: string;
 };
