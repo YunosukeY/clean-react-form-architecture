@@ -10,7 +10,7 @@ const FieldView: React.FC<FieldViewProps> = ({ useDependencies }) => {
   const { input, error } = useDependencies();
   return (
     <>
-      <TextField {...input} />
+      <TextField {...input} error={error !== undefined} />
       <Typography color="error">{error}</Typography>
     </>
   );
