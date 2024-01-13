@@ -1,7 +1,7 @@
 import React from "react";
-import { FormProvider, useForm } from "react-hook-form";
+import { FormProvider, UseFormReturn, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import FormView from "../../form-ui/FormView";
+import FormView, { FormViewProps } from "../../form-ui/FormView";
 import { User, userSchema } from "../../schema/user";
 import { getUseField } from "./getUseField";
 
@@ -15,7 +15,9 @@ const FormPresenter: React.FC = () => {
   );
 };
 
-const useDependencies = () => {
+const useDependencies = (): FormViewProps & {
+  methods: UseFormReturn<User>;
+} => {
   const methods = useForm<User>({
     defaultValues: {
       firstName: "",

@@ -1,6 +1,6 @@
 import React from "react";
 import { FormikProvider, useFormik } from "formik";
-import FormView from "../../form-ui/FormView";
+import FormView, { FormViewProps } from "../../form-ui/FormView";
 import { User, userSchema } from "../../schema/user";
 import { getUseField } from "./getUseField";
 
@@ -27,7 +27,9 @@ const FormPresenter: React.FC = () => {
   );
 };
 
-const useDependencies = () => {
+const useDependencies = (): FormViewProps & {
+  formik: ReturnType<typeof useFormik<User>>;
+} => {
   const formik = useFormik<User>({
     initialValues: {
       firstName: "",
@@ -42,11 +44,11 @@ const useDependencies = () => {
 
   return {
     formik,
-    getValue: () => undefined,
+    getValue: (name: string) => formik.getFieldProps(name).value,
     setValue: formik.setFieldValue,
     isDirty: formik.dirty,
     isValid: formik.isValid,
-    validate: () => {},
+    validate: formik.validateForm,
     onSubmit: formik.handleSubmit,
     getUseField,
   };

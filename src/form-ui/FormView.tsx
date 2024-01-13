@@ -3,7 +3,7 @@ import { Button, Grid } from "@mui/material";
 import { GetUseField } from "./props";
 import FieldView from "./FieldView";
 
-type FormTemplateProps = {
+export type FormViewProps = {
   getValue: (path: string) => unknown;
   setValue: (path: string, value: unknown) => void;
   validate: () => void;
@@ -13,7 +13,7 @@ type FormTemplateProps = {
   getUseField: GetUseField;
 };
 
-const FormView: React.FC<FormTemplateProps> = ({
+const FormView: React.FC<FormViewProps> = ({
   getValue,
   setValue,
   isDirty,

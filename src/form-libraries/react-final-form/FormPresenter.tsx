@@ -1,7 +1,7 @@
 import React from "react";
-import { Form as FinalForm } from "react-final-form";
+import { Form as FinalForm, FormRenderProps } from "react-final-form";
 import FormView from "../../form-ui/FormView";
-import { userSchema } from "../../schema/user";
+import { User, userSchema } from "../../schema/user";
 import { getUseField } from "./getUseField";
 
 const validate = (user: unknown) => {
@@ -27,12 +27,12 @@ const FormPresenter: React.FC = () => {
       onSubmit={(values) => console.log(values)}
       render={({
         handleSubmit,
-        form: { change, blur, getState },
+        form: { change, blur, getFieldState },
         dirty,
         valid,
-      }) => (
+      }: FormRenderProps<User>) => (
         <FormView
-          getValue={() => undefined}
+          getValue={(name) => getFieldState(name as any)?.value}
           setValue={change as (name: string, value: unknown) => void}
           isDirty={dirty}
           isValid={valid}
