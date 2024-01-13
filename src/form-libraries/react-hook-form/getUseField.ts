@@ -9,10 +9,12 @@ export const getUseField: GetUseField = (name) => () => {
   });
 
   return {
-    name,
-    value: field.value,
-    onChange: field.onChange,
-    onBlur: field.onBlur,
+    input: {
+      name,
+      value: field.value,
+      onChange: field.onChange,
+      onBlur: field.onBlur,
+    },
     error: fieldState.error?.message,
   };
 };

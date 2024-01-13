@@ -7,7 +7,7 @@ type FieldViewProps = {
 };
 
 const FieldView: React.FC<FieldViewProps> = ({ useDependencies }) => {
-  const { error, ...input } = useDependencies();
+  const { input, error } = useDependencies();
   return (
     <>
       <TextField {...input} />
