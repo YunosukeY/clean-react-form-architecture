@@ -9,7 +9,7 @@ export type FormViewProps = {
   validate: () => void;
   isDirty: boolean;
   isValid: boolean;
-  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  onSubmit: React.FormEventHandler<HTMLFormElement>;
   getUseField: GetUseField;
 };
 

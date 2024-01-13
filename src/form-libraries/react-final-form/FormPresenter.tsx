@@ -43,7 +43,7 @@ const FormPresenter: React.FC = () => {
       )}
       validate={validate}
       validateOnBlur
-      subscription={{ values: true, dirty: true, valid: true }}
+      subscription={{ dirty: true, valid: true }}
       mutators={{ validate: () => {} }}
     />
   );

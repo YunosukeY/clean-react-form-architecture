@@ -1,8 +1,10 @@
+import React from "react";
+
 type Field = {
   name: string;
   value: unknown;
-  onChange: (event: any) => void;
-  onBlur: (event: any) => void;
+  onChange: React.ChangeEventHandler<HTMLElement>;
+  onBlur: React.FocusEventHandler<HTMLElement>;
   error?: string;
 };
 
