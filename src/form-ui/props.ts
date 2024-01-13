@@ -1,4 +1,4 @@
-export type Field = {
+type Field = {
   name: string;
   value: unknown;
   onChange: (event: any) => void;

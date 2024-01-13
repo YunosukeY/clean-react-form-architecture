@@ -1,9 +1,9 @@
 import React from "react";
-import { Field } from "./props";
+import { GetUseField } from "./props";
 import { TextField, Typography } from "@mui/material";
 
 type FieldViewProps = {
-  useDependencies: () => Field;
+  useDependencies: ReturnType<GetUseField>;
 };
 
 const FieldView: React.FC<FieldViewProps> = ({ useDependencies }) => {

@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Grid } from "@mui/material";
-import { Field } from "./props";
+import { GetUseField } from "./props";
 import FieldView from "./FieldView";
 
 type FormTemplateProps = {
@@ -10,7 +10,7 @@ type FormTemplateProps = {
   isDirty: boolean;
   isValid: boolean;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-  getUseField: (name: string) => () => Field;
+  getUseField: GetUseField;
 };
 
 const FormView: React.FC<FormTemplateProps> = ({
