@@ -27,7 +27,7 @@ const FormPresenter: React.FC = () => {
       onSubmit={(values) => console.log(values)}
       render={({
         handleSubmit,
-        form: { change, blur, getFieldState },
+        form: { getFieldState, change, mutators },
         dirty,
         valid,
       }: FormRenderProps<User>) => (
@@ -36,7 +36,7 @@ const FormPresenter: React.FC = () => {
           setValue={change as (name: string, value: unknown) => void}
           isDirty={dirty}
           isValid={valid}
-          validate={() => {}}
+          validate={mutators.validate}
           onSubmit={handleSubmit}
           getUseField={getUseField}
         />
@@ -44,6 +44,7 @@ const FormPresenter: React.FC = () => {
       validate={validate}
       validateOnBlur
       subscription={{ values: true, dirty: true, valid: true }}
+      mutators={{ validate: () => {} }}
     />
   );
 };
