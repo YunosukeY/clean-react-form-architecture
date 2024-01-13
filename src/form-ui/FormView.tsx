@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Grid } from "@mui/material";
-import { GetUseField } from "./props";
+import { GetUseField } from "./types";
 import FieldView from "./FieldView";
 
 export type FormViewProps = {

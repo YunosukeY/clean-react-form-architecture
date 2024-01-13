@@ -1,5 +1,5 @@
 import React from "react";
-import { GetUseField } from "./props";
+import { GetUseField } from "./types";
 import { TextField, Typography } from "@mui/material";
 
 type FieldViewProps = {

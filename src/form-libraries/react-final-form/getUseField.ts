@@ -1,5 +1,5 @@
 import { useField } from "react-final-form";
-import { GetUseField } from "../../form-ui/props";
+import { GetUseField } from "../../form-ui/types";
 
 export const getUseField: GetUseField = (name) => () => {
   const { input, meta } = useField(name);

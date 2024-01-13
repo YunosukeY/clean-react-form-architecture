@@ -1,5 +1,5 @@
 import { useController, useFormContext } from "react-hook-form";
-import { GetUseField } from "../../form-ui/props";
+import { GetUseField } from "../../form-ui/types";
 
 export const getUseField: GetUseField = (name) => () => {
   const { control } = useFormContext();

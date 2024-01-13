@@ -1,5 +1,5 @@
 import { useField } from "formik";
-import { GetUseField } from "../../form-ui/props";
+import { GetUseField } from "../../form-ui/types";
 
 export const getUseField: GetUseField = (name) => () => {
   const [field, meta] = useField(name);
